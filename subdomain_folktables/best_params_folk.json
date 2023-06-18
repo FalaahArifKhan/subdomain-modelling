@@ -1,0 +1,1 @@
+{"rf": {"learner__n_estimators": 700, "learner__min_samples_split": 10, "learner__min_samples_leaf": 2, "learner__max_depth": 90, "learner__bootstrap": true}, "lgbm": {"learner__num_leaves": 20, "learner__min_data_in_leaf": 100, "learner__max_depth": 11}}
