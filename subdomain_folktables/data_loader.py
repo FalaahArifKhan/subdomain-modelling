@@ -211,12 +211,9 @@ class ACSEmploymentDataset():
         self.dataset = dataset
         
 
-    def update_X_data(self, X_data):
-        """
-        To save simulated nulls
-        """
-        self.X_data = X_data
-        self.columns_with_nulls = self.X_data.columns[self.X_data.isna().any().to_list()].to_list()
+    def update_data(self, new_dataset):
+        self.dataset = new_dataset
+        return self.dataset
 
 
 def optimize_data_loading(data, categorical):

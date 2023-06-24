@@ -70,3 +70,17 @@ def predict_with_subdomain_model(models, train_groups, test_samples_groups, feat
             y_preds+=list(models[test_group_name].predict(test_samples_groups[test_group_name][features_lst]))
     
     return y_true, y_preds
+
+
+def predict_with_subdomain_model_with_metrics(models, train_groups, test_samples_groups, features_lst, target_name):
+    y_true = []
+    y_preds = []
+    domain_info = []
+    for test_group_name in test_samples_groups.keys():
+        if (len(test_samples_groups[test_group_name]) > 0) & (test_group_name in train_groups) :
+            y_true+= list(test_samples_groups[test_group_name][target_name].values)
+            y_preds+=list(models[test_group_name].predict(test_samples_groups[test_group_name][features_lst]))
+            domain_info+=[test_group_name]*len(test_samples_groups[test_group_name])
+
+    results_df = pd.DataFrame({"y_true": y_true, "y_pred": y_preds, "domain": domain_info})
+    return results_df
